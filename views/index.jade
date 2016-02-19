@@ -1,5 +1,18 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+    nav
+        .nav-wrapper
+            .container
+                a(href='#' class='brand-logo left') Logo
+                ul(id='nav-mobile' class='left hide-on-med-and-down')
+                    li
+                        a(href='#') One
+                    li
+                        a(href='#') Two
+                    li
+                        a(href='#') Three
+
+    .container
+        h2(class='header blue-text')= title
+        p(class='flow-text') Welcome to #{title}
