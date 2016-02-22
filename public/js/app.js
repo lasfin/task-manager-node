@@ -3,7 +3,7 @@
 var crmApp = angular.module('crmApp', ['ui.router']);
 
 crmApp.config(function($stateProvider, $urlRouterProvider) {
-    //$urlRouterProvider.otherwise("/tasks");
+    $urlRouterProvider.otherwise('/');
 
     $stateProvider
         .state('tasks', {

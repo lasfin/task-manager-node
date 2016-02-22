@@ -1,0 +1,19 @@
+> use crmNode
+> db.createCollection('tasks');
+> db.createCollection('clients');
+> db.tasks.insert({
+    title:"Tasks One",
+    body:"This is full task description.",
+    createdAt:new Date(),
+    dueDate:'',
+    tags:"frontend",
+    priority:"6"
+    })
+> db.tasks.insert({
+    title:"Tasks Two",
+    body:"This is full task description. Bla bla bla",
+    createdAt:new Date(),
+    dueDate:'',
+    tags:"backend",
+    priority:"4"
+    })
