@@ -4,10 +4,14 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+
+//routes
 const indexPage = require('./routes/index');
 const uiPartials = require('./routes/partials');
-const app = express();
+const tasks = require('./routes/tasks');
 
+
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -24,7 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexPage);
 app.use('/partials', uiPartials);
-
+app.use('/tasks', tasks);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
