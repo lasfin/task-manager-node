@@ -1,6 +1,8 @@
 .container
     .row
-        .col.s6.m3
+    div(ng-repeat='(key, task) in tasks')
+        |<div class='row' ng-if='key % 4 === 0')>
+        .col.s6.m3 {{task}}
             .card.blue.lighten-5
                 .card-content.grey-text.text-darken-1
                     .card-title Card Title
@@ -8,27 +10,4 @@
                 .card-action
                     a.cyan-text(href='#') Details
                     a.cyan-text(href='#') Mark as done
-        .col.s6.m3
-            .card.blue.lighten-5
-                .card-content.grey-text.text-darken-1
-                    .card-title Card Title
-                    p I am a very simple card. I am good at containing small bits of information.
-                .card-action
-                    a.cyan-text(href='#') Details
-                    a.cyan-text(href='#') Mark as done
-        .col.s6.m3
-            .card.blue.lighten-5
-                .card-content.grey-text.text-darken-1
-                    .card-title Card Title
-                    p I am a very simple card.
-                .card-action
-                    a.cyan-text(href='#') Details
-                    a.cyan-text(href='#') Mark as done
-        .col.s6.m3
-            .card.blue.lighten-5
-                .card-content.grey-text.text-darken-1
-                    .card-title Card Title
-                    p I am a very simple card. I am good at containing small bits of information.
-                .card-action
-                    a.cyan-text(href='#') Details
-                    a.cyan-text(href='#') Mark as done
+        |</div ng-if='key-1 % 4 === 0')>

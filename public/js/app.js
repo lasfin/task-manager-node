@@ -8,7 +8,8 @@ crmApp.config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state('tasks', {
             url: '/tasks',
-            templateUrl: 'partials/tasks'
+            templateUrl: 'partials/tasks',
+            controller: 'TasksCtrl'
         })
         .state('clients', {
             url: '/clients',
