@@ -1,4 +1,3 @@
-/*global angular*/
 (function () {
 
     'use strict';
@@ -6,19 +5,13 @@
     angular.module('crmApp')
 
         .controller('TasksCtrl',
-            ['$scope', '$rootScope',
-                function ($scope, $rootScope) {
-                    $scope.tasks = [
-                        {id: 1,
-                        title: 'trett'},
-                        {id: 2,
-                        title: 'fsdfsdf'},
-                        {id: 3,
-                            title: 'fsfsdfsdf'},
-                        {id: 4,
-                            title: 'fdsfds'},
-                        {id: 5,
-                            title: 'fdsfds'}
-                    ]
+            ['$scope', '$rootScope', 'tasksFactory',
+                function ($scope, $rootScope, tasksFactory) {
+                    $scope.tasks = tasksFactory;
+                    tasksFactory.getTasks()
+                        .success(function (response) {
+                            $scope.tasks = response.tasks;
+                        })
+                        .error(function (error) {});
                 }]);
 })();
