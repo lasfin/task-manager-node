@@ -5,8 +5,8 @@
     angular.module('crmApp')
 
         .controller('TasksCtrl',
-            ['$scope', '$rootScope', 'tasksFactory',
-                function ($scope, $rootScope, tasksFactory) {
+            ['$scope', 'tasksFactory',
+                function ($scope, tasksFactory) {
                     $scope.tasks = [];
                     tasksFactory.getTasks()
                         .success(function (response) {

@@ -14,5 +14,10 @@ crmApp.config(function($stateProvider, $urlRouterProvider) {
         .state('clients', {
             url: '/clients',
             templateUrl: 'partials/clients'
-        });
+        })
+        .state('add_task', {
+            url: '/tasks/add',
+            controller: 'AddTaskCtrl',
+            templateUrl: 'partials/create_task'
+        })
 });
