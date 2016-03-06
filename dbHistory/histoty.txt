@@ -6,7 +6,7 @@
     body:"This is full task description.",
     createdAt:new Date(),
     dueDate:'',
-    tags:"frontend",
+    tags:['frontend'],
     priority:"6"
     })
 > db.tasks.insert({
@@ -14,6 +14,6 @@
     body:"This is full task description. Bla bla bla",
     createdAt:new Date(),
     dueDate:'',
-    tags:"backend",
+    tags:['backend'],
     priority:"4"
     })

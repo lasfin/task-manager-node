@@ -1,11 +1,14 @@
 .container
     .row
         div(ng-repeat='(key, task) in tasks')
-            .col.s6.m3 {{task}}
+            .col.s6.m3
                 .card.blue.lighten-5
                     .card-content.grey-text.text-darken-1
-                        .card-title Card Title
-                        p I am a very simple card. I am good at containing small bits of information.
+                        span.card-time {{task.createdAt | date:'mediumDate'}}
+                        .card-title {{task.title}}
+                        p {{task.body}}
+                        span(ng-repeat='(key, tag) in task.tags')
+                            span.card-tag {{tag}}
                     .card-action
                         a.cyan-text(href='#') Details
                         a.cyan-text(href='#') Mark as done
