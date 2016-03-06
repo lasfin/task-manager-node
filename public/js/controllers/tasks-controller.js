@@ -7,7 +7,7 @@
         .controller('TasksCtrl',
             ['$scope', '$rootScope', 'tasksFactory',
                 function ($scope, $rootScope, tasksFactory) {
-                    $scope.tasks = tasksFactory;
+                    $scope.tasks = [];
                     tasksFactory.getTasks()
                         .success(function (response) {
                             $scope.tasks = response.tasks;

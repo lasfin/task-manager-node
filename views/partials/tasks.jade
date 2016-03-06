@@ -1,6 +1,14 @@
 .container
     .row
-        div(ng-repeat='(key, task) in tasks')
+        .col.s6.m6
+                input(ng-model='searchTask' placeholder='Search')
+        .col.s6.m6
+            a.waves-effect.waves-light.btn.-create(href='#')
+                i.material-icons.right library_add
+                span create task
+
+    .row
+        div(ng-repeat='(key, task) in tasks | filter:searchTask')
             .col.s6.m3
                 .card.blue.lighten-5
                     .card-content.grey-text.text-darken-1
