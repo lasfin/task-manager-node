@@ -8,5 +8,16 @@
             ['$scope', 'tasksFactory',
                 function ($scope, tasksFactory) {
                     $('select').material_select();
+
+                    var submitBtn = document.querySelectorAll('#submit');
+                    submitBtn[0].addEventListener('click', checkUserData);
                 }]);
+
+        function checkUserData(){
+            var title = document.querySelectorAll('#title')[0].value;
+            var priority = document.querySelectorAll('#priority')[0].value;
+            var subject = document.querySelectorAll('#subject')[0].value;
+            var tags = document.querySelectorAll('#tags')[0].value.split(',');
+            //todo: sent to server
+        }
 })();
