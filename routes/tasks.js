@@ -15,4 +15,38 @@ router.get('/', (req, res, next) => {
 });
 
 
+router.post('/', (req, res, next) => {
+    // Ger form values
+    let title       = req.body.title;
+    let priority    = req.body.priority;
+    let subject     = req.body.subject;
+    let createdAt   = new Date();
+    let tags        = req.body.tags.split(',');
+
+    let errors  = false;
+
+    // Check Errors
+    if(errors) {
+
+    } else {
+        let tasks = db.get('tasks');
+        tasks.insert({
+            title,
+            priority,
+            body: subject,
+            createdAt,
+            tags
+        }, (err, task) => {
+            if(err){
+                res.send('There was an issue submitting the task');
+            } else {
+                res.send('Successfully added');
+            }
+        });
+    }
+
+    
+});
+
+
 module.exports = router;
