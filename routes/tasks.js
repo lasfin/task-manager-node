@@ -21,7 +21,7 @@ router.post('/', (req, res, next) => {
     let priority    = req.body.priority;
     let subject     = req.body.subject;
     let createdAt   = new Date();
-    let tags        = req.body.tags.split(',');
+    let tags        = req.body.tags;
 
     let errors  = false;
 
