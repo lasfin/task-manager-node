@@ -12,14 +12,14 @@
     .row
         .section
             div(ng-repeat='(key, task) in tasks | filter:searchTask')
-                .col.s6.m3
+                .col.l6.m6.s6
                     .card.blue.lighten-5
                         .card-content.grey-text.text-darken-1
                             span.card-time {{task.createdAt | date:'mediumDate'}}
                             .card-title {{task.title}}
                             p {{task.body}}
-                            span(ng-repeat='(key, tag) in task.tags')
-                                span.card-tag {{tag}}
+                            div.card-tags
+                                span.card-tag(ng-repeat='(key, tag) in task.tags') {{tag}}
                         .card-action
                             a.cyan-text(href='#') Details
                             a.cyan-text(href='#') Mark as done

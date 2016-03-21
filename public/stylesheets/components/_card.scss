@@ -1,4 +1,9 @@
 .card {
+    &-title {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
     &-time {
         position: absolute;
         top: 0;
@@ -10,6 +15,16 @@
         a {
             font-size: 12px;
         }
+    }
+    &-content {
+        p {
+            height: 65px;
+            overflow: hidden;
+        }
+    }
+    &-tags {
+        height: 24px;
+        overflow: hidden;
     }
     &-tag {
         font-size: 12px;

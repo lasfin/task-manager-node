@@ -1,3 +1,5 @@
-@import 'components/page';
-@import 'components/card';
-@import 'components/buttons';
+#crmApp {
+    @import 'components/page';
+    @import 'components/card';
+    @import 'components/buttons';
+}
