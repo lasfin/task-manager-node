@@ -9,9 +9,9 @@
                 function ($scope, tasksFactory) {
                     $scope.tasks = [];
                     tasksFactory.getTasks()
-                        .success(function (response) {
+                        .success((response) => {
                             $scope.tasks = response.tasks;
                         })
-                        .error(function (error) {});
+                        .error((error) => {});
                 }]);
 })();

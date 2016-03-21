@@ -3,6 +3,7 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass');
 const concat = require('gulp-concat');
+const babel = require('gulp-babel');
 
 
 gulp.task('sass', () => {
@@ -26,6 +27,9 @@ gulp.task('libs-js', () => {
 gulp.task('app-js', () => {
     return gulp.src(['./js/app.js', 'js/**/*.js'])
         .pipe(concat('application.js'))
+        .pipe(babel({
+            presets: ['es2015']
+        }))
         .pipe(gulp.dest('./build/js/'));
 });
 

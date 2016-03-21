@@ -25,13 +25,13 @@
 
                     function sentToServer(title, priority, subject, tags) {
                         tasksFactory.createTask({
-                            title: title,
-                            priority: priority,
-                            subject: subject,
-                            tags: tags
-                        }).then(function(){
+                            title,
+                            priority,
+                            subject,
+                            tags
+                        }).then(function() {
                             console.log('success');
-                        }, function(){
+                        }, function() {
                             console.log('error');
                         });
                     }
