@@ -15,11 +15,19 @@ html
             nav.teal
                 .nav-wrapper
                     .container
+                        a.button-collapse(href='#', data-activates='mobile-demo')
+                            i.material-icons menu
                         ul(id='nav-mobile' class='left hide-on-med-and-down')
                             li
                                 a(ui-sref='tasks') Tasks
                             li
                                 a(ui-sref='clients') Clients
+                        ul(id='mobile-demo' class='side-nav')
+                            li
+                                a(ui-sref='tasks') Tasks
+                            li
+                                a(ui-sref='clients') Clients
+
 
             div.ui-view
 

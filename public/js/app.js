@@ -21,3 +21,7 @@ crmApp.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: 'partials/create_task'
         })
 });
+
+crmApp.run(function() {
+    $(".button-collapse").sideNav();
+});
