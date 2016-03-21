@@ -9,9 +9,8 @@
                 function ($scope, tasksFactory, Notification) {
                     $('select').material_select();
 
-                    var submitBtn = document.querySelectorAll('#submit');
-                    submitBtn[0].addEventListener('click', checkUserData);
-
+                    document.querySelectorAll('#submit')[0].addEventListener('click', checkUserData);
+                    document.querySelectorAll('#clear')[0].addEventListener('click', clearFields);
 
                     function checkUserData() {
                         var nodes = getDomNodes();
@@ -20,7 +19,7 @@
                         var subject = nodes.subject.value;
                         var tags = nodes.tags.value.split(',');
 
-                        sentToServer(title, priority, subject, tags, nodes);
+                        sentToServer(title, priority, subject, tags);
                     }
 
 
@@ -33,7 +32,7 @@
                     }
 
 
-                    function sentToServer(title, priority, subject, tags, nodes) {
+                    function sentToServer(title, priority, subject, tags) {
                         tasksFactory.createTask({
                             title,
                             priority,
@@ -41,14 +40,15 @@
                             tags
                         }).then(function() {
                             Notification.success('Successfully added');
-                            clearFields(nodes);
+                            clearFields();
                         }, function() {
                             Notification.error('Something goes wrong')
                         });
                     }
 
 
-                    function clearFields(nodes) {
+                    function clearFields() {
+                        var nodes = getDomNodes();
                         for (var node in nodes) {
                             if (nodes.hasOwnProperty(node)) {
                                 nodes[node].value = '';
