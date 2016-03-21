@@ -7,7 +7,11 @@ const babel = require('gulp-babel');
 
 
 gulp.task('sass', () => {
-    return gulp.src('./stylesheets/**/*.scss')
+    return gulp.src([
+            '../node_modules/angular-ui-notification/dist/angular-ui-notification.css',
+            './stylesheets/**/*.scss'
+        ])
+        .pipe(concat('main.css'))
         .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
         .pipe(gulp.dest('./css'));
 });
@@ -18,7 +22,8 @@ gulp.task('libs-js', () => {
         '../node_modules/jquery/dist/jquery.js',
         '../node_modules/materialize-css/dist/js/materialize.js',
         '../node_modules/angular/angular.js',
-        '../node_modules/angular-ui-router/release/angular-ui-router.js'
+        '../node_modules/angular-ui-router/release/angular-ui-router.js',
+        '../node_modules/angular-ui-notification/dist/angular-ui-notification.js'
     ])
         .pipe(concat('libs.js'))
         .pipe(gulp.dest('./build/js/'));

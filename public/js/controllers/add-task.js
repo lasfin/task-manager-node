@@ -5,36 +5,57 @@
     angular.module('crmApp')
 
         .controller('AddTaskCtrl',
-            ['$scope', 'tasksFactory',
-                function ($scope, tasksFactory) {
+            ['$scope', 'tasksFactory', 'Notification',
+                function ($scope, tasksFactory, Notification) {
                     $('select').material_select();
 
                     var submitBtn = document.querySelectorAll('#submit');
                     submitBtn[0].addEventListener('click', checkUserData);
 
 
-                    function checkUserData(){
-                        var title = document.querySelectorAll('#title')[0].value;
-                        var priority = document.querySelectorAll('#priority')[0].value;
-                        var subject = document.querySelectorAll('#subject')[0].value;
-                        var tags = document.querySelectorAll('#tags')[0].value.split(',');
+                    function checkUserData() {
+                        var nodes = getDomNodes();
+                        var title = nodes.title.value;
+                        var priority = nodes.priority.value;
+                        var subject = nodes.subject.value;
+                        var tags = nodes.tags.value.split(',');
 
-                        sentToServer(title, priority, subject, tags);
+                        sentToServer(title, priority, subject, tags, nodes);
                     }
 
 
-                    function sentToServer(title, priority, subject, tags) {
+                    function getDomNodes() {
+                        var title = document.querySelectorAll('#title')[0];
+                        var priority = document.querySelectorAll('#priority')[0];
+                        var subject = document.querySelectorAll('#subject')[0];
+                        var tags = document.querySelectorAll('#tags')[0];
+                        return { title, priority, subject, tags }
+                    }
+
+
+                    function sentToServer(title, priority, subject, tags, nodes) {
                         tasksFactory.createTask({
                             title,
                             priority,
                             subject,
                             tags
                         }).then(function() {
-                            console.log('success');
+                            Notification.success('Successfully added');
+                            clearFields(nodes);
                         }, function() {
-                            console.log('error');
+                            Notification.error('Something goes wrong')
                         });
                     }
+
+
+                    function clearFields(nodes) {
+                        for (var node in nodes) {
+                            if (nodes.hasOwnProperty(node)) {
+                                nodes[node].value = '';
+                            }
+                        }
+                    }
+
 
                 }]);
 })();

@@ -1,6 +1,6 @@
 'use strict';
 
-var crmApp = angular.module('crmApp', ['ui.router']);
+var crmApp = angular.module('crmApp', ['ui.router', 'ui-notification']);
 
 crmApp.config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
