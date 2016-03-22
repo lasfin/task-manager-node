@@ -1,1 +1,39 @@
-.container clients here
+.container
+    .row
+        .section
+            .col.s6.m6
+                input(ng-model='' placeholder='Search')
+            .col.s6.m6
+                a.waves-effect.waves-light.btn.-create(ui-sref='add_client')
+                    i.material-icons.right library_add
+                    span Add
+
+    .row
+        ul.collection
+            li.collection-item.avatar
+                i.material-icons.circle person_pin
+                span.title Title
+                p
+                    | First Line
+                    br
+                    | Second Line
+                a.secondary-content(href='#!')
+                    i.material-icons assignment
+            li.collection-item.avatar
+                i.material-icons.circle.green person_pin
+                span.title Title
+                p
+                    | First Line
+                    br
+                    | Second Line
+                a.secondary-content(href='#!')
+                    i.material-icons assignment
+            li.collection-item.avatar
+                i.material-icons.circle.red person_pin
+                span.title Title
+                p
+                    | First Line
+                    br
+                    | Second Line
+                a.secondary-content(href='#!')
+                    i.material-icons assignment
