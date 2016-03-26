@@ -2,7 +2,7 @@
 
 var crmApp = angular.module('crmApp', ['ui.router', 'ui-notification', 'angularUtils.directives.dirPagination']);
 
-crmApp.config(function($stateProvider, $urlRouterProvider, paginationTemplateProvider) {
+crmApp.config(($stateProvider, $urlRouterProvider, paginationTemplateProvider) => {
     $urlRouterProvider.otherwise('/');
 
     $stateProvider
@@ -25,6 +25,6 @@ crmApp.config(function($stateProvider, $urlRouterProvider, paginationTemplatePro
 
 });
 
-crmApp.run(function() {
+crmApp.run(() => {
     $(".button-collapse").sideNav();
 });

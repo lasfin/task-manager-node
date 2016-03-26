@@ -5,16 +5,13 @@
     angular.module('crmApp')
 
         .factory('tasksFactory', ['$http', 'appConfig', function ($http, appConfig) {
-                var tasksFactory = {};
-
-                tasksFactory.getTasks = function() {
-                    return $http.get(appConfig.tasksUrl);
+                return {
+                    getTasks() {
+                        return $http.get(appConfig.tasksUrl);
+                    },
+                    createTask(data) {
+                        return $http.post(appConfig.tasksUrl, data);
+                    }
                 };
-
-                tasksFactory.createTask = function(data) {
-                    return $http.post(appConfig.tasksUrl, data);
-                };
-
-                return tasksFactory;
             }]);
 })();
