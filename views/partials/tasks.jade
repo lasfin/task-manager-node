@@ -20,7 +20,7 @@
                             div.card-tags
                                 span.card-tag(ng-repeat='(key, tag) in task.tags') {{tag}}
                         .card-action
-                            a.cyan-text(href='#') Details
+                            a.cyan-text(ui-sref='task({id: task._id})') Details
                             a.cyan-text(href='#') Mark as done
             div(ng-if='tasks.length === 0')
                 span There're no tasks. You can add them
