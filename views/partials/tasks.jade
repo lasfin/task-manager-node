@@ -10,7 +10,7 @@
 
     .row
         .section
-            div(ng-repeat='(key, task) in tasks | filter:searchTask')
+            div(dir-paginate='(key, task) in tasks | itemsPerPage: 12 | filter:searchTask')
                 .col.l4.m6.s6
                     .card.blue.lighten-5
                         .card-content.grey-text.text-darken-1
@@ -26,3 +26,6 @@
                 span There're no tasks. You can add them
                     a(ui-sref='add_task')
                         |&nbsp;here.
+            .clearfix
+            .pagination
+                dir-pagination-controls

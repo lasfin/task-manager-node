@@ -1,8 +1,8 @@
 'use strict';
 
-var crmApp = angular.module('crmApp', ['ui.router', 'ui-notification']);
+var crmApp = angular.module('crmApp', ['ui.router', 'ui-notification', 'angularUtils.directives.dirPagination']);
 
-crmApp.config(function($stateProvider, $urlRouterProvider) {
+crmApp.config(function($stateProvider, $urlRouterProvider, paginationTemplateProvider) {
     $urlRouterProvider.otherwise('/');
 
     $stateProvider
@@ -19,7 +19,10 @@ crmApp.config(function($stateProvider, $urlRouterProvider) {
             url: '/tasks/add',
             controller: 'AddTaskCtrl',
             templateUrl: 'partials/create_task'
-        })
+        });
+
+    paginationTemplateProvider.setPath('/partials/pagination');
+
 });
 
 crmApp.run(function() {
