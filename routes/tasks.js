@@ -8,9 +8,29 @@ router.get('/', (req, res, next) => {
     let tasks = db.get('tasks');
 
     tasks.find({}, {}, (err, tasks) => {
-        res.send({
-            tasks
-        });
+        if (err) {
+            res.status(500).send({ error: 'There was an issue getting the tasks' });
+        } else {
+            res.send({
+                tasks
+            });
+        }
+    })
+});
+
+
+router.get('/:id', (req, res, next) => {
+    let tasks = db.get('tasks');
+    let id = req.params.id;
+
+    tasks.findById(id, (err, task) => {
+        if (err) {
+            res.status(500).send({ error: 'There was an issue finding the task' });
+        } else {
+            res.send({
+                task
+            });
+        }
     })
 });
 
@@ -38,14 +58,12 @@ router.post('/', (req, res, next) => {
             tags
         }, (err, task) => {
             if(err){
-                res.send('There was an issue submitting the task');
+                res.status(500).send({ error: 'There was an issue submitting the task' });
             } else {
                 res.send('Successfully added');
             }
         });
     }
-
-    
 });
 
 
