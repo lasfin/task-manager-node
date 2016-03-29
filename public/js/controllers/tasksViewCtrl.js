@@ -8,7 +8,7 @@
             ['$scope', 'tasksFactory',
                 function ($scope, tasksFactory) {
                     $scope.tasks = [];
-                    tasksFactory.getTasks()
+                    tasksFactory.get()
                         .success((response) => {
                             $scope.tasks = response.tasks;
                         })

@@ -6,10 +6,13 @@
 
         .factory('tasksFactory', ['$http', 'appConfig', function ($http, appConfig) {
                 return {
-                    getTasks() {
+                    get() {
                         return $http.get(appConfig.tasksUrl);
                     },
-                    createTask(data) {
+                    getById(id) {
+                        return $http.get(appConfig.tasksUrl + id);
+                    },
+                    create(data) {
                         return $http.post(appConfig.tasksUrl, data);
                     }
                 };

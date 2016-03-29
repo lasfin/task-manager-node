@@ -33,7 +33,7 @@
 
 
                     function sentToServer(title, priority, subject, tags) {
-                        tasksFactory.createTask({
+                        tasksFactory.create({
                             title,
                             priority,
                             subject,

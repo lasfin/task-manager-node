@@ -7,6 +7,10 @@
         .controller('TaskViewCtrl',
             ['$scope', '$stateParams', 'tasksFactory',
                 function ($scope, $stateParams, tasksFactory) {
-                    var id = $stateParams.id;
+                    tasksFactory.getById($stateParams.id)
+                        .success((response) => {
+                            $scope.task = response.task;
+                        })
+                        .error((error) => {});
                 }]);
 })();
