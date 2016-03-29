@@ -43,11 +43,8 @@ router.post('/', (req, res, next) => {
     let createdAt   = new Date();
     let tags        = req.body.tags;
 
-    let errors  = false;
-
-    // Check Errors
-    if(errors) {
-
+    if(!title || !priority || !subject) {
+        res.status(500).send({ error: 'Missed required parameters' });
     } else {
         let tasks = db.get('tasks');
         tasks.insert({
