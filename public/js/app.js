@@ -1,6 +1,11 @@
 'use strict';
 
-var crmApp = angular.module('crmApp', ['ui.router', 'ui-notification', 'angularUtils.directives.dirPagination']);
+var crmApp = angular.module('crmApp', [
+    'ui.router',
+    'ui-notification',
+    'angularUtils.directives.dirPagination',
+    'ngDialog'
+]);
 
 crmApp.config(($stateProvider, $urlRouterProvider, paginationTemplateProvider) => {
     $urlRouterProvider.otherwise('/');

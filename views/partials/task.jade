@@ -1,6 +1,11 @@
 .container
     .row
         .card-panel
+            div.card-actions.right-align
+                span.new.badge.edit edit
+                    i.material-icons.tiny subject
+                span.new.badge delete
+                    i.material-icons.tiny close
             h5 separate {{tasl.title}}
             p Priority: {{task.priority}}
             p Created at: {{task.createdAt | date:'medium'}}
