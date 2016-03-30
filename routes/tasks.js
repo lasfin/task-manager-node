@@ -40,7 +40,6 @@ router.delete('/:id', (req, res, next) => {
     let id = req.params.id;
     tasks.findById(id, (err, task) => {
         if (err) {
-            console.log(err);
             res.status(404).send({ error: 'Can\'t find a task with id: ' + id });
         } else {
             tasks.remove( { _id : id });
@@ -51,7 +50,6 @@ router.delete('/:id', (req, res, next) => {
 
 
 router.post('/', (req, res, next) => {
-    // Ger form values
     let title       = req.body.title;
     let priority    = req.body.priority;
     let subject     = req.body.subject;
