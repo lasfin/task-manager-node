@@ -4,7 +4,7 @@
             div.card-actions.right-align
                 span.new.badge.edit edit
                     i.material-icons.tiny subject
-                span.new.badge(ng-click='delete(task._id)') delete
+                span.new.badge(ng-click='openDeletePopup()') delete
                     i.material-icons.tiny close
             h5 {{task.title}}
             p Priority: {{task.priority}}
@@ -23,9 +23,9 @@
 script(type='text/ng-template' id='templateId')
     h5.center Are you sure?
     .popup-actions
-        a.waves-effect.waves-light.btn
+        a.waves-effect.waves-light.btn(ng-click='closeThisDialog()')
             i.material-icons.left backspace
             | Cancel
-        a.waves-effect.waves-light.btn
+        a.waves-effect.waves-light.btn(ng-click='confirmDelete() && closeThisDialog()')
             i.material-icons.right delete
             | Delete

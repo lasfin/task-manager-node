@@ -15,6 +15,9 @@
                     update(id) {
                         return $http.update(appConfig.tasksUrl + id);
                     },
+                    delete(id) {
+                        return $http.post(appConfig.tasksUrl + id, {});
+                    },
                     create(data) {
                         return $http.post(appConfig.tasksUrl, data);
                     }

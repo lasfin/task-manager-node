@@ -42,7 +42,7 @@
                             Notification.success('Successfully added');
                             clearFields();
                         }, function() {
-                            Notification.error('Something goes wrong')
+                            Notification.error('Something goes wrong');
                         });
                     }
 
