@@ -13,7 +13,7 @@
                         return $http.get(appConfig.tasksUrl + id);
                     },
                     update(id) {
-                        return $http.put(appConfig.tasksUrl + id, {sma});
+                        return $http.put(appConfig.tasksUrl + id, {});
                     },
                     delete(id) {
                         return $http.delete(appConfig.tasksUrl + id, {});
