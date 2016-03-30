@@ -9,7 +9,7 @@ router.get('/', (req, res, next) => {
 
     tasks.find({}, {}, (err, tasks) => {
         if (err) {
-            res.status(500).send({ error: 'There was an issue getting the tasks' });
+            res.status(404).send({ error: 'There was an issue getting the tasks' });
         } else {
             res.send({
                 tasks
@@ -25,11 +25,26 @@ router.get('/:id', (req, res, next) => {
 
     tasks.findById(id, (err, task) => {
         if (err) {
-            res.status(500).send({ error: 'There was an issue finding the task' });
+            res.status(404).send({ error: 'There was an issue finding the task' });
         } else {
             res.send({
                 task
             });
+        }
+    })
+});
+
+
+router.delete('/:id', (req, res, next) => {
+    let tasks = db.get('tasks');
+    let id = req.params.id;
+    tasks.findById(id, (err, task) => {
+        if (err) {
+            console.log(err);
+            res.status(404).send({ error: 'Can\'t find a task with id: ' + id });
+        } else {
+            tasks.remove( { _id : id });
+            res.status(200).send();
         }
     })
 });
