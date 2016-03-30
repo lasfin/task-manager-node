@@ -1,0 +1,13 @@
+.popup {
+    &-actions {
+        margin: 1.5em 0;
+        text-align: center;
+        .btn {
+            display: inline-block;
+            height: 30px;
+            line-height: 30px;
+            font-size: 1em;
+            margin: 0 8px;
+        }
+    }
+}

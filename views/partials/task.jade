@@ -4,9 +4,9 @@
             div.card-actions.right-align
                 span.new.badge.edit edit
                     i.material-icons.tiny subject
-                span.new.badge delete
+                span.new.badge(ng-click='delete(task._id)') delete
                     i.material-icons.tiny close
-            h5 separate {{tasl.title}}
+            h5 {{task.title}}
             p Priority: {{task.priority}}
             p Created at: {{task.createdAt | date:'medium'}}
             blockquote {{task.body}}
@@ -19,3 +19,13 @@
                     a.waves-effect.waves-light.btn
                         i.material-icons.right done
                         | done
+
+script(type='text/ng-template' id='templateId')
+    h5.center Are you sure?
+    .popup-actions
+        a.waves-effect.waves-light.btn
+            i.material-icons.left backspace
+            | Cancel
+        a.waves-effect.waves-light.btn
+            i.material-icons.right delete
+            | Delete

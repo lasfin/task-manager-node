@@ -9,6 +9,8 @@ const babel = require('gulp-babel');
 gulp.task('sass', () => {
     return gulp.src([
             '../node_modules/angular-ui-notification/dist/angular-ui-notification.css',
+            '../node_modules/ng-dialog/css/ngDialog.css',
+            '../node_modules/ng-dialog/css/ngDialog-theme-default.css',
             './stylesheets/**/*.scss'
         ])
         .pipe(concat('main.css'))
@@ -24,7 +26,8 @@ gulp.task('libs-js', () => {
         '../node_modules/angular/angular.js',
         '../node_modules/angular-ui-router/release/angular-ui-router.js',
         '../node_modules/angular-ui-notification/dist/angular-ui-notification.js',
-        '../node_modules/angular-utils-pagination/dirPagination.js'
+        '../node_modules/angular-utils-pagination/dirPagination.js',
+        '../node_modules/ng-dialog/js/ngDialog.js'
     ])
         .pipe(concat('libs.js'))
         .pipe(gulp.dest('./build/js/'));
@@ -47,6 +50,4 @@ gulp.task('watch', ['app-js', 'sass'],  () => {
 });
 
 
-gulp.task('default', () => {
-    gulp.run('sass', 'libs-js', 'app-js', 'watch');
-});
+gulp.task('default', ['sass', 'libs-js', 'app-js', 'watch']);
