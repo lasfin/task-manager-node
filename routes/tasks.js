@@ -70,7 +70,13 @@ router.post('/', (req, res, next) => {
             if(err){
                 res.status(500).send({ error: 'There was an issue submitting the task' });
             } else {
-                res.send('Successfully added');
+                res.status(201).send({
+                    title,
+                    priority,
+                    subject,
+                    createdAt,
+                    tags
+                });
             }
         });
     }
