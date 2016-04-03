@@ -1,0 +1,27 @@
+.container
+    .row
+        .card-panel
+            h5 Title:
+                input(type='text', ng-model='task.title')
+            p Priority:
+                input(type='text', ng-model='task.priority')
+            //div
+            //    select(ng-model='task.priority')
+            //        option(value=1 ng-selected='task.priority == 1') 1
+            //        option(value=2 ng-selected='task.priority == 2') 2
+            //        option(value=3 ng-selected='task.priority == 3') 3
+            //        option(value=4 ng-selected='task.priority == 4') 4
+            //        option(value=5 ng-selected='task.priority == 5') 5
+                label Priority
+            p Created at: {{task.createdAt | date:'medium'}}
+            blockquote
+                textarea.materialize-textarea(ng-model='task.body')
+            div
+                div.chip(ng-repeat='tag in task.tags') {{tag}}
+                    i.material-icons label
+                | &nbsp;
+            div
+                p.right-align
+                    a.waves-effect.waves-light.btn
+                        i.material-icons.right done
+                        | Save changes

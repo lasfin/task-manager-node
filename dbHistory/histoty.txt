@@ -1,6 +1,8 @@
 > use crmNode
 > db.createCollection('tasks');
 > db.createCollection('clients');
+> db.tasks.update({}, {$set: {"completed": false}}, {upsert: false, multi: true})
+> db.tasks.update({}, {$set: {"completedAt": ''}}, {upsert: false, multi: true})
 > db.tasks.insert({
     title:"Tasks One",
     body:"This is full task description.",

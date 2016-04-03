@@ -2,8 +2,9 @@
     .row
         .card-panel
             div.card-actions.right-align
-                span.new.badge.edit edit
-                    i.material-icons.tiny subject
+                a(ui-sref='edit_task({id: task._id})')
+                    span.new.badge.edit edit
+                        i.material-icons.tiny subject
                 span.new.badge(ng-click='openDeletePopup()') delete
                     i.material-icons.tiny close
             h5 {{task.title}}
