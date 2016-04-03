@@ -54,6 +54,7 @@
                                 nodes[node].value = '';
                             }
                         }
+                        $('select').material_select();
                     }
 
 

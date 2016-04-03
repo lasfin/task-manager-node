@@ -11,7 +11,7 @@ test('GET /tasks', (assert) => {
         .expect(200)
         .expect('Content-Type', /json/)
         .end(function(err, res) {
-            assert.error(err, 'No error');
+            assert.error(err, 'get tasks');
             assert.end();
         });
 });
@@ -32,7 +32,7 @@ test('POST /tasks', (assert) => {
         .expect('Content-Type', /json/)
         .end(function (err, res) {
             assert.equal(typeof res.body.createdAt, 'string', 'api should return a creation date');
-            assert.error(err, 'No error');
+            assert.error(err, 'create a task');
             assert.end();
         });
 });
