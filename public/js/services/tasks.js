@@ -12,8 +12,8 @@
                     getById(id) {
                         return $http.get(appConfig.tasksUrl + id);
                     },
-                    update(id) {
-                        return $http.put(appConfig.tasksUrl + id, {});
+                    update(id, task) {
+                        return $http.put(appConfig.tasksUrl + id, task);
                     },
                     delete(id) {
                         return $http.delete(appConfig.tasksUrl + id, {});
