@@ -12,8 +12,9 @@
                         | {{opt}}
             blockquote
                 textarea.materialize-textarea(ng-model='task.body')
+            p Tags:
             div
-                chip(ng-repeat='tag in task.tags') {{tag}}
+                input(ng-model='task.tags')
             div
                 p.right-align
                     a.waves-effect.waves-light.btn(ng-click='update()')

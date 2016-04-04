@@ -19,10 +19,29 @@
                         .error(() => {
                             Notification.error('Can\'t find a task');
                         });
+
                     $scope.update = function() {
-                        console.log($scope.task);
-                        return false;
-                        tasksFactory.update($scope.task._id, $scope.task);
+                        var tags = [];
+                        if(Array.isArray($scope.task.tags)) {
+                            tags = $scope.task.tags;
+                        } else {
+                            tags = $scope.task.tags ? $scope.task.tags.split(',') : [];
+                        }
+
+                        tasksFactory.update($scope.task._id, {
+                            _id: $scope.task._id,
+                            title: $scope.task.title,
+                            priority: $scope.task.priority,
+                            body: $scope.task.body,
+                            tags: tags,
+                            completed: $scope.task.completed,
+                            completedAt: $scope.task.completedAt,
+                            createdAt: $scope.task.createdAt
+                        }).then(() => {
+                            Notification.success('Successfully edited');
+                        }, () => {
+                            Notification.error('Something goes wrong');
+                        });
                     }
                 }])
 })();
