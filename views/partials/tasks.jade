@@ -22,6 +22,8 @@
                 .col.l4.m6.s6
                     .card.blue.lighten-5
                         .card-content.grey-text.text-darken-1
+                            span.card-priority
+                                a.btn-floating(ui-sref='task({id: task._id})' class='p{{task.priority}}')
                             span.card-time {{task.createdAt | date:'mediumDate'}}
                             .card-title {{task.title}}
                             p {{task.body}}
