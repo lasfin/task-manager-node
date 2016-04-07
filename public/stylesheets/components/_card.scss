@@ -60,6 +60,9 @@
     &-action {
         a {
             font-size: 12px;
+            &:hover {
+                cursor: pointer;
+            }
         }
     }
     &-content {

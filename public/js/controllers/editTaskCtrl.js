@@ -5,8 +5,8 @@
     angular.module('crmApp')
 
         .controller('TaskEditCtrl',
-            ['$scope', '$stateParams', 'tasksFactory', 'ngDialog', 'Notification',
-                function ($scope, $stateParams, tasksFactory, ngDialog, Notification) {
+            ['$scope', '$stateParams', 'tasksFactory', 'ngDialog', 'Notification', 'helpers',
+                function ($scope, $stateParams, tasksFactory, ngDialog, Notification, helpers) {
                     $scope.selectOptions = [1,2,3,4,5];
 
                     tasksFactory.getById($stateParams.id)
@@ -21,12 +21,7 @@
                         });
 
                     $scope.update = function() {
-                        var tags = [];
-                        if(Array.isArray($scope.task.tags)) {
-                            tags = $scope.task.tags;
-                        } else {
-                            tags = $scope.task.tags ? $scope.task.tags.split(',') : [];
-                        }
+                        var tags = helpers.splitByChar($scope.task.tags, ',');
 
                         tasksFactory.update($scope.task._id, {
                             _id: $scope.task._id,
