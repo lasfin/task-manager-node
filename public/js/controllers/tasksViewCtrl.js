@@ -29,6 +29,7 @@
                             completedAt: task.completedAt,
                             createdAt: task.createdAt
                         }).then(() => {
+                            task.completed = true;
                             Notification.success('Successfully updated');
                         }, () => {
                             Notification.error('Something goes wrong');

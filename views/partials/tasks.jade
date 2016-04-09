@@ -22,16 +22,14 @@
                 .col.l4.m6.s6
                     .card.blue.lighten-5
                         .card-content.grey-text.text-darken-1
-                            span.card-priority
-                                a.btn-floating(ui-sref='task({id: task._id})' class='p{{task.priority}}')
-                            span.card-time {{task.createdAt | date:'mediumDate'}}
+                            span.card-additional-info {{task.createdAt | date:'mediumDate'}} | {{task.priority}}
                             .card-title {{task.title}}
                             p {{task.body}}
                             div.card-tags
                                 span.card-tag(ng-repeat='(key, tag) in task.tags') {{tag}}
                         .card-action
                             a.cyan-text(ui-sref='task({id: task._id})') Details
-                            a.cyan-text(ng-click='markAsDone(task._id)') Mark as done
+                            a.cyan-text(ng-if='!task.completed' ng-click='markAsDone(task._id)') Mark as done
             div(ng-if='tasks.length === 0')
                 span There're no tasks. You can add them
                     a(ui-sref='add_task')
