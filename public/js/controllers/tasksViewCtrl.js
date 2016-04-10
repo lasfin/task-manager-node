@@ -8,9 +8,33 @@
             ['$scope', 'tasksFactory', 'helpers', 'Notification',
                 function ($scope, tasksFactory, helpers, Notification) {
                     $scope.tasks = [];
+                    installSort();
+                    $scope.onSort = function() {
+                        switch ($scope.selected.sortName){
+                            case 'date':
+                                $scope.tasks.sort((a, b) => {
+                                    if (a.createdAt < b.createdAt) {
+                                        return 1;
+                                    } else if ( a.createdAt > b.createdAt) {
+                                        return -1;
+                                    }
+                                    return 0;
+                                });
+                                break;
+                            case 'priority':
+                                $scope.tasks.sort((a, b) => {
+                                    return a.priority - b.priority;
+                                });
+                                break;
+                        }
+                        if ($scope.selected.sortDirection === 'desc') $scope.tasks.reverse();
+                    };
+
+
                     tasksFactory.get()
                         .success((response) => {
                             $scope.tasks = response.tasks;
+                            $scope.onSort();
                         })
                         .error((error) => {});
 
@@ -35,6 +59,35 @@
                             Notification.error('Something goes wrong');
                         });
                     };
+
+
+                    function installSort() {
+                        $scope.items = [{
+                            id: 1,
+                            sortName: 'date',
+                            sortDirection: 'asc',
+                            label: 'Date (newest first)'
+                        }, {
+                            id: 2,
+                            sortName: 'date',
+                            sortDirection: 'desc',
+                            label: 'Date (oldest first)'
+                        }, {
+                            id: 3,
+                            sortName: 'priority',
+                            sortDirection: 'desc',
+                            label: 'Priority (high first)'
+                        }, {
+                            id: 4,
+                            sortName: 'priority',
+                            sortDirection: 'asc',
+                            label: 'Priority (low first)'
+                        }];
+                        $scope.selected = $scope.items[0];
+                        setTimeout(() => {
+                            $('select').material_select();
+                        }, 0);
+                    }
 
                 }]);
 })();
