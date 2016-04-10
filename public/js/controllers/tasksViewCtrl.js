@@ -57,8 +57,8 @@
                     tasksFactory.get()
                         .success((response) => {
                             $scope.tasks = response.tasks;
-                            $scope.sortTasks();
                             $scope.filterTasks();
+                            $scope.sortTasks();
                         })
                         .error((error) => {});
 

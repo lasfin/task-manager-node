@@ -6,9 +6,16 @@
             p Priority:
             div
                 select(ng-model='task.priority')
-                    option(ng-repeat='opt in selectOptions',
+                    option(ng-repeat='opt in priorityOptions',
                            ng-selected='{{opt===task.priority}}',
                            value='{{opt}}')
+                        | {{opt}}
+            p Completed:
+            div
+                select(ng-model='task.completed')
+                    option(ng-repeat='opt in doneOptions',
+                    ng-selected='{{opt===task.completed}}',
+                    value='{{opt}}')
                         | {{opt}}
             blockquote
                 textarea.materialize-textarea(ng-model='task.body')
