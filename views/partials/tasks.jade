@@ -6,7 +6,7 @@
             .col.s4.m4
                 select(ng-options='item as item.label for item in items track by item.id',
                     ng-model='selected',
-                    ng-change='onSort()')
+                    ng-change='sortTasks()')
             .col.s3.m3.offset-s1.offset-m1
                 a.waves-effect.waves-light.btn.-create(ui-sref='add_task')
                     i.material-icons.right library_add
@@ -14,15 +14,15 @@
     .row
         .col.s12.m12
             .col.s6.m3
-                input#completed(type='checkbox')
+                input#completed(type='checkbox', ng-model='showCompleted' ng-change='filterTasks()')
                 label(for='completed') Completed
             .col.s6.m3
-                input#not-completed(type='checkbox', checked='checked')
+                input#not-completed(type='checkbox', ng-model='showNotCompleted' ng-change='filterTasks()')
                 label(for='not-completed') Not Completed
 
     .row
         .section
-            div(dir-paginate='(key, task) in tasks | itemsPerPage: 12 | filter:searchTask')
+            div(dir-paginate='(key, task) in tasksToShow | itemsPerPage: 12 | filter:searchTask')
                 .col.l4.m6.s6
                     .card.blue.lighten-5
                         .card-content.grey-text.text-darken-1
@@ -34,7 +34,7 @@
                         .card-action
                             a.cyan-text(ui-sref='task({id: task._id})') Details
                             a.cyan-text(ng-if='!task.completed' ng-click='markAsDone(task._id)') Mark as done
-            div(ng-if='tasks.length === 0')
+            div(ng-if='tasksToShow.length === 0')
                 span There're no tasks. You can add them
                     a(ui-sref='add_task')
                         |&nbsp;here.

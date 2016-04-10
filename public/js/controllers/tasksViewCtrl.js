@@ -8,8 +8,13 @@
             ['$scope', 'tasksFactory', 'helpers', 'Notification',
                 function ($scope, tasksFactory, helpers, Notification) {
                     $scope.tasks = [];
+                    $scope.showCompleted = false;
+                    $scope.showNotCompleted = true;
+
                     installSort();
-                    $scope.onSort = function() {
+
+
+                    $scope.sortTasks = function() {
                         switch ($scope.selected.sortName){
                             case 'date':
                                 $scope.tasks.sort((a, b) => {
@@ -28,13 +33,32 @@
                                 break;
                         }
                         if ($scope.selected.sortDirection === 'desc') $scope.tasks.reverse();
+                        $scope.tasksToShow = $scope.tasks;
                     };
 
+                    $scope.filterTasks = function() {
+                        $scope.tasksToShow = [];
+                        var completed = [],
+                            notCompleted = [];
+
+                        if ($scope.showCompleted) {
+                            completed = $scope.tasks.filter(function(task) {
+                                return task.completed;
+                            })
+                        }
+                        if ($scope.showNotCompleted) {
+                            notCompleted = $scope.tasks.filter(function(task){
+                                return !task.completed;
+                            })
+                        }
+                        $scope.tasksToShow = completed.concat(notCompleted);
+                    };
 
                     tasksFactory.get()
                         .success((response) => {
                             $scope.tasks = response.tasks;
-                            $scope.onSort();
+                            $scope.sortTasks();
+                            $scope.filterTasks();
                         })
                         .error((error) => {});
 
@@ -59,7 +83,6 @@
                             Notification.error('Something goes wrong');
                         });
                     };
-
 
                     function installSort() {
                         $scope.items = [{
@@ -88,6 +111,5 @@
                             $('select').material_select();
                         }, 0);
                     }
-
                 }]);
 })();
