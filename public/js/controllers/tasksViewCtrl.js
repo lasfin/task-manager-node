@@ -42,12 +42,12 @@
                             notCompleted = [];
 
                         if ($scope.showCompleted) {
-                            completed = $scope.tasks.filter(function(task) {
+                            completed = $scope.tasks.filter((task) => {
                                 return task.completed;
                             })
                         }
                         if ($scope.showNotCompleted) {
-                            notCompleted = $scope.tasks.filter(function(task){
+                            notCompleted = $scope.tasks.filter((task) => {
                                 return !task.completed;
                             })
                         }
@@ -60,7 +60,9 @@
                             $scope.filterTasks();
                             $scope.sortTasks();
                         })
-                        .error((error) => {});
+                        .error(() => {
+                            Notification.error('Something goes wrong');
+                        });
 
                     $scope.markAsDone = function(taskId) {
                         var task = $scope.tasks.find((item) => {
