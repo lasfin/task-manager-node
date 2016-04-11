@@ -29,17 +29,13 @@
                         if (savedTask.completed === false && $scope.task.completed === true) {
                             $scope.task.completedAt = new Date();
                         }
-                        var tags = helpers.splitByChar($scope.task.tags, ',');
-
-
-                        console.log($scope.task.completed, !!$scope.task.completed);
 
                         tasksFactory.update($scope.task._id, {
                             _id: $scope.task._id,
                             title: $scope.task.title,
                             priority: $scope.task.priority,
                             body: $scope.task.body,
-                            tags: tags,
+                            tags: helpers.splitByChar($scope.task.tags, ','),
                             completed: $scope.task.completed,
                             completedAt: $scope.task.completedAt,
                             createdAt: $scope.task.createdAt

@@ -33,6 +33,7 @@ crmApp.config(($stateProvider, $urlRouterProvider, paginationTemplateProvider) =
         })
         .state('clients', {
             url: '/clients',
+            controller: 'ClientsView',
             templateUrl: 'partials/clients'
         });
 

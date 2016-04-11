@@ -2,7 +2,7 @@
     .row
         .section
             .col.s6.m6
-                input(ng-model='' placeholder='Search')
+                input(ng-model='searchClient' placeholder='Search')
             .col.s6.m6
                 a.waves-effect.waves-light.btn.-create(ui-sref='add_client')
                     i.material-icons.right library_add
@@ -10,30 +10,17 @@
 
     .row
         ul.collection
-            li.collection-item.avatar
-                i.material-icons.circle person_pin
-                span.title Title
-                p
-                    | First Line
-                    br
-                    | Second Line
-                a.secondary-content(href='#!')
-                    i.material-icons assignment
-            li.collection-item.avatar
-                i.material-icons.circle.green person_pin
-                span.title Title
-                p
-                    | First Line
-                    br
-                    | Second Line
-                a.secondary-content(href='#!')
-                    i.material-icons assignment
-            li.collection-item.avatar
-                i.material-icons.circle.red person_pin
-                span.title Title
-                p
-                    | First Line
-                    br
-                    | Second Line
-                a.secondary-content(href='#!')
-                    i.material-icons assignment
+            div(dir-paginate='(key, client) in clients | itemsPerPage: 10 | filter:searchClient')
+                li.collection-item.avatar
+                    i.material-icons.circle person_pin
+                    span.title {{client.name}}
+                    p
+                        | {{client.mail}}
+                        br
+                        | {{client.phone}}
+                    a.secondary-content(href='#!')
+                        i.material-icons assignment
+
+        .clearfix
+        .pagination
+            dir-pagination-controls
