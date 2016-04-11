@@ -11,6 +11,7 @@ crmApp.config(($stateProvider, $urlRouterProvider, paginationTemplateProvider) =
     $urlRouterProvider.otherwise('/');
 
     $stateProvider
+        // tasks
         .state('tasks', {
             url: '/tasks',
             templateUrl: 'partials/tasks',
@@ -31,10 +32,16 @@ crmApp.config(($stateProvider, $urlRouterProvider, paginationTemplateProvider) =
             controller: 'TaskEditCtrl',
             templateUrl: 'partials/edit_task'
         })
+        // clients
         .state('clients', {
             url: '/clients',
             controller: 'ClientsView',
             templateUrl: 'partials/clients'
+        })
+        .state('add_client', {
+            url: '/clients/add',
+            controller: 'AddClient',
+            templateUrl: 'partials/create_client'
         });
 
     paginationTemplateProvider.setPath('/partials/pagination');
