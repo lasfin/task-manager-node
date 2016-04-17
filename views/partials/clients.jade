@@ -9,7 +9,7 @@
                     span Add
 
     .row
-        ul.collection
+        ul.collection(ng-if='clients.length !== 0')
             div(dir-paginate='(key, client) in clients | itemsPerPage: 10 | filter:searchClient')
                 li.collection-item.avatar
                     i.material-icons.circle person_pin
@@ -20,6 +20,11 @@
                         | {{client.phone}}
                     a.secondary-content(href='#!')
                         i.material-icons assignment
+
+        div(ng-if='clients.length === 0')
+            span There're no clients. You can add them
+                a(ui-sref='add_client')
+                    | &nbsp;here.
 
         .clearfix
         .pagination

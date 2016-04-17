@@ -7,7 +7,12 @@
         .controller('ClientsView',
             ['$scope', 'clientsFactory', 'Notification',
                 function ($scope, clientsFactory, Notification) {
-                    $scope.clients = clientsFactory.get();
-                    console.log($scope.clients);
+                    clientsFactory.get()
+                        .success((response) => {
+                            $scope.clients = response.clients;
+                        })
+                        .error(() => {
+                            Notification.error('Something goes wrong');
+                        });
                 }]);
 })();
