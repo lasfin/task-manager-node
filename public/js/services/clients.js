@@ -7,27 +7,19 @@
         .factory('clientsFactory', ['$http', 'appConfig', function ($http, appConfig) {
             return {
                 get() {
-                    return [
-                        {
-                            id: '1',
-                            name: 'Client One name',
-                            mail: 'test@test.com',
-                            phone: '880074570'
-                        },
-                        {
-                            id: '2',
-                            name: 'Client Two name',
-                            mail: 'test@test2.com',
-                            phone: '880074570'
-                        },
-                        {
-                            id: '3',
-                            name: 'Client Three name',
-                            mail: 'test@test3.com',
-                            phone: '5435345345'
-                        }
-                    ];
-                    //return $http.get(appConfig.clientsUrl);
+                    return $http.get(appConfig.clientsUrl);
+                },
+                getById(id) {
+                    return $http.get(appConfig.clientsUrl + id);
+                },
+                update(id, client) {
+                    return $http.put(appConfig.clientsUrl + id, client);
+                },
+                delete(id) {
+                    return $http.delete(appConfig.clientsUrl + id, {});
+                },
+                create(data) {
+                    return $http.post(appConfig.clientsUrl, data);
                 }
             };
         }]);

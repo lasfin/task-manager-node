@@ -5,6 +5,7 @@
     angular.module('crmApp')
 
         .constant('appConfig', {
-            tasksUrl: '/tasks/'
+            tasksUrl: '/tasks/',
+            clientsUrl: '/clients/'
         });
 })();
