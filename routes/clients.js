@@ -69,9 +69,9 @@ router.delete('/:id', (req, res, next) => {
 
 
 router.post('/', (req, res, next) => {
-    let name  = req.body.title;
-    let phone = req.body.priority;
-    let email = req.body.subject;
+    let name  = req.body.name;
+    let phone = req.body.phone;
+    let email = req.body.email;
     let info  = req.body.info;
 
     if(!name) {
