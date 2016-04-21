@@ -4,7 +4,7 @@
 
     angular.module('crmApp')
 
-        .controller('TaskViewCtrl',
+        .controller('ViewTask',
             ['$scope', '$stateParams', 'tasksFactory', 'ngDialog',
                 function ($scope, $stateParams, tasksFactory, ngDialog) {
                     tasksFactory.getById($stateParams.id)

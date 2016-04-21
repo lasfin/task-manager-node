@@ -1,0 +1,17 @@
+.container
+    .row
+        .card-panel
+            div.card-actions.right-align
+                a(ui-sref='edit_client({id: client._id})')
+                    span.new.badge.edit edit
+                        i.material-icons.tiny subject
+                span.new.badge(ng-click='openDeletePopup()') delete
+                    i.material-icons.tiny close
+            h5 {{client.name}}
+            p Phone {{client.phone}}
+            p Email {{client.email}}
+            blockquote {{client.info}}
+            div
+                div.chip(ng-repeat='tag in task.tags') {{tag}}
+                    i.material-icons label
+                | &nbsp;

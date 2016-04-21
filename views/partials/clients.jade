@@ -18,7 +18,7 @@
                         | {{client.email}}
                         br
                         | {{client.phone}}
-                    a.secondary-content(href='#!')
+                    a.secondary-content(ui-sref="client({id: client._id})")
                         i.material-icons assignment
 
         div(ng-if='clients.length === 0')

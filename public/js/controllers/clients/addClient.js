@@ -35,9 +35,19 @@
                             info
                         }).then(function() {
                             Notification.success('Successfully added');
+                            clearFields();
                         }, function() {
                             Notification.error('Something goes wrong');
                         });
+                    }
+
+                    function clearFields() {
+                        var nodes = getDomNodes();
+                        for (var node in nodes) {
+                            if (nodes.hasOwnProperty(node)) {
+                                nodes[node].value = '';
+                            }
+                        }
                     }
 
                 }]);

@@ -4,7 +4,7 @@
 
     angular.module('crmApp')
 
-        .controller('TasksCtrl',
+        .controller('ViewTasks',
             ['$scope', 'tasksFactory', 'helpers', 'Notification',
                 function ($scope, tasksFactory, helpers, Notification) {
                     $scope.tasks = [];

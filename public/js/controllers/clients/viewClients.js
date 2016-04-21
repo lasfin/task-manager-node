@@ -4,7 +4,7 @@
 
     angular.module('crmApp')
 
-        .controller('ClientsView',
+        .controller('ViewClients',
             ['$scope', 'clientsFactory', 'Notification',
                 function ($scope, clientsFactory, Notification) {
                     clientsFactory.get()

@@ -4,7 +4,7 @@
 
     angular.module('crmApp')
 
-        .controller('AddTaskCtrl',
+        .controller('AddTask',
             ['$scope', 'tasksFactory', 'Notification',
                 function ($scope, tasksFactory, Notification) {
                     $('select').material_select();

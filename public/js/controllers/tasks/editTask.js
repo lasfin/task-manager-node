@@ -4,7 +4,7 @@
 
     angular.module('crmApp')
 
-        .controller('TaskEditCtrl',
+        .controller('EditTask',
             ['$scope', '$stateParams', 'tasksFactory', 'ngDialog', 'Notification', 'helpers',
                 function ($scope, $stateParams, tasksFactory, ngDialog, Notification, helpers) {
                     $scope.priorityOptions = [1,2,3,4,5];
