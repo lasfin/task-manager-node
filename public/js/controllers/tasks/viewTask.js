@@ -16,15 +16,15 @@
 
                     $scope.openDeletePopup = function() {
                         ngDialog.open({
-                            template: 'templateId',
+                            template: 'deleteTask',
                             className: 'ngdialog-theme-default',
-                            controller: 'submitDeleteCtrl'
+                            controller: 'submitDeleteTask'
                         });
                     };
                 }])
 
 
-        .controller('submitDeleteCtrl',
+        .controller('submitDeleteTask',
             ['$scope', '$state', '$stateParams', 'tasksFactory', 'Notification', 'ngDialog',
                 function ($scope, $state, $stateParams, tasksFactory, Notification, ngDialog) {
                     $scope.confirmDelete = function() {

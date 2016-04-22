@@ -15,3 +15,14 @@
                 div.chip(ng-repeat='tag in task.tags') {{tag}}
                     i.material-icons label
                 | &nbsp;
+
+
+script(type='text/ng-template' id='deleteClient')
+    h5.center Are you sure?
+    .popup-actions
+        a.waves-effect.waves-light.btn(ng-click='closeThisDialog()')
+            i.material-icons.left backspace
+            | Cancel
+        a.waves-effect.waves-light.btn(ng-click='confirmDelete() && closeThisDialog()')
+            i.material-icons.right delete
+            | Delete
