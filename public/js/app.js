@@ -52,6 +52,12 @@ crmApp.config(($stateProvider, $urlRouterProvider, paginationTemplateProvider) =
             url: '/clients/:id/edit',
             controller: 'EditClient',
             templateUrl: 'partials/edit_client'
+        })
+        //stats
+        .state('stats', {
+            url: '/stats',
+            controller: 'Stats',
+            templateUrl: 'partials/stats'
         });
 
     paginationTemplateProvider.setPath('/partials/pagination');
