@@ -1,0 +1,16 @@
+.container
+    .row
+        .card-panel
+            p Name:
+                input(type='text', ng-model='client.name')
+            p Phone:
+                input(type='text', ng-model='client.phone')
+            p Email:
+                input(type='text', ng-model='client.email')
+            blockquote
+                textarea.materialize-textarea(ng-model='client.info')
+            div
+                p.right-align
+                    a.waves-effect.waves-light.btn(ng-click='updateClient()')
+                        i.material-icons.right done
+                        | Save changes
