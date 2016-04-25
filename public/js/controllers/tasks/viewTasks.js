@@ -76,7 +76,7 @@
                             body: task.body,
                             tags: helpers.splitByChar(task.tags, ','),
                             completed: true,
-                            completedAt: task.completedAt,
+                            completedAt: new Date(),
                             createdAt: task.createdAt
                         }).then(() => {
                             task.completed = true;

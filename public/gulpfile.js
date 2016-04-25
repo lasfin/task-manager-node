@@ -27,7 +27,8 @@ gulp.task('libs-js', () => {
         '../node_modules/angular-ui-router/release/angular-ui-router.js',
         '../node_modules/angular-ui-notification/dist/angular-ui-notification.js',
         '../node_modules/angular-utils-pagination/dirPagination.js',
-        '../node_modules/ng-dialog/js/ngDialog.js'
+        '../node_modules/ng-dialog/js/ngDialog.js',
+        '../node_modules/highcharts/highcharts'
     ])
         .pipe(concat('libs.js'))
         .pipe(gulp.dest('./build/js/'));
