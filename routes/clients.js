@@ -2,7 +2,8 @@
 
 const express = require('express');
 const router = express.Router();
-const db = require('monk')('localhost/crmNode');
+const cr = require('./credentials/db-user');
+const db = require('monk')(`mongodb://${cr.username}:${cr.password}@ds033097.mlab.com:33097/heroku_hk3j7g2x`);
 
 router.get('/', (req, res, next) => {
     let clients = db.get('clients');

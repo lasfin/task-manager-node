@@ -140,50 +140,6 @@ crmApp.run(function () {
 
     'use strict';
 
-    angular.module('crmApp').controller('Stats', ['$scope', function ($scope) {
-        $('#tasks-stats').highcharts({
-            title: {
-                text: 'Created and completed tasks',
-                x: -20 //center
-            },
-            subtitle: {
-                text: 'In Last Month',
-                x: -20
-            },
-            xAxis: {
-                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-            },
-            yAxis: {
-                title: {
-                    text: 'Tasks'
-                },
-                plotLines: [{
-                    value: 0,
-                    width: 1,
-                    color: '#808080'
-                }]
-            },
-            legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'middle',
-                borderWidth: 0
-            },
-            series: [{
-                name: 'Created',
-                data: [7, 6, 9, 4, 8, 1, 5, 6, 3, 8, 3, 6]
-            }, {
-                name: 'Completed',
-                data: [2, 8, 7, 3, 7, 2, 8, 4, 2, 4, 8, 2]
-            }]
-        });
-    }]);
-})();
-
-(function () {
-
-    'use strict';
-
     angular.module('crmApp').controller('AddClient', ['$scope', 'clientsFactory', 'Notification', function ($scope, clientsFactory, Notification) {
         document.querySelectorAll('#submit')[0].addEventListener('click', checkUserData);
 
@@ -297,6 +253,50 @@ crmApp.run(function () {
             $scope.clients = response.clients;
         }).error(function () {
             Notification.error('Something goes wrong');
+        });
+    }]);
+})();
+
+(function () {
+
+    'use strict';
+
+    angular.module('crmApp').controller('Stats', ['$scope', function ($scope) {
+        $('#tasks-stats').highcharts({
+            title: {
+                text: 'Created and completed tasks',
+                x: -20 //center
+            },
+            subtitle: {
+                text: 'In Last Month',
+                x: -20
+            },
+            xAxis: {
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            },
+            yAxis: {
+                title: {
+                    text: 'Tasks'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+                borderWidth: 0
+            },
+            series: [{
+                name: 'Created',
+                data: [7, 6, 9, 4, 8, 1, 5, 6, 3, 8, 3, 6]
+            }, {
+                name: 'Completed',
+                data: [2, 8, 7, 3, 7, 2, 8, 4, 2, 4, 8, 2]
+            }]
         });
     }]);
 })();
