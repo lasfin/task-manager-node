@@ -62,7 +62,8 @@ crmApp.run(function () {
 
     angular.module('crmApp').constant('appConfig', {
         tasksUrl: '/tasks/',
-        clientsUrl: '/clients/'
+        clientsUrl: '/clients/',
+        statsUrl: '/stats/'
     });
 })();
 (function () {
@@ -108,6 +109,18 @@ crmApp.run(function () {
             },
             create: function create(data) {
                 return $http.post(appConfig.clientsUrl, data);
+            }
+        };
+    }]);
+})();
+(function () {
+
+    'use strict';
+
+    angular.module('crmApp').factory('statsFactory', ['$http', 'appConfig', function ($http, appConfig) {
+        return {
+            geTasksStats: function geTasksStats() {
+                return $http.get(appConfig.statsUrl + 'tasks/');
             }
         };
     }]);
@@ -261,14 +274,21 @@ crmApp.run(function () {
 
     'use strict';
 
-    angular.module('crmApp').controller('Stats', ['$scope', function ($scope) {
+    angular.module('crmApp').controller('Stats', ['$scope', 'statsFactory', 'Notification', function ($scope, statsFactory, Notification) {
+
+        statsFactory.geTasksStats().success(function (response) {
+            $scope.tasksData = response;
+        }).error(function () {
+            Notification.error('Something goes wrong');
+        });
+
         $('#tasks-stats').highcharts({
             title: {
                 text: 'Created and completed tasks',
                 x: -20 //center
             },
             subtitle: {
-                text: 'In Last Month',
+                text: 'During the year',
                 x: -20
             },
             xAxis: {

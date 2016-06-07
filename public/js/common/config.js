@@ -6,6 +6,7 @@
 
         .constant('appConfig', {
             tasksUrl: '/tasks/',
-            clientsUrl: '/clients/'
+            clientsUrl: '/clients/',
+            statsUrl: '/stats/'
         });
 })();

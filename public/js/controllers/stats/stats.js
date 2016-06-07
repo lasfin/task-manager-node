@@ -5,14 +5,24 @@
     angular.module('crmApp')
 
         .controller('Stats',
-            ['$scope', function ($scope) {
+            ['$scope', 'statsFactory', 'Notification', function ($scope, statsFactory, Notification) {
+
+                statsFactory.geTasksStats()
+                    .success((response) => {
+                        $scope.tasksData = response;
+                    })
+                    .error(() => {
+                        Notification.error('Something goes wrong');
+                    });
+
+
                 $('#tasks-stats').highcharts({
                     title: {
                         text: 'Created and completed tasks',
                         x: -20 //center
                     },
                     subtitle: {
-                        text: 'In Last Month',
+                        text: 'During the year',
                         x: -20
                     },
                     xAxis: {

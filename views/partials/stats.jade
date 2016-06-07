@@ -2,13 +2,13 @@
     .row
         .col.s4
             p.stats-promo Total tasks:
-            p.stats-counter 13
+            p.stats-counter {{tasksData.total}}
         .col.s4
             p.stats-promo Completed tasks:
-            p.stats-counter 12
+            p.stats-counter {{tasksData.completed}}
         .col.s4
             p.stats-promo Unfinished tasks:
-            p.stats-counter 1
+            p.stats-counter {{tasksData.unfinished}}
     .row
         .section
             .col.s12.m12
